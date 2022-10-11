@@ -1,0 +1,45 @@
+[[package]]
+name = "dbus-next"
+version = "0.2.3"
+description = "A zero-dependency DBus library for Python with asyncio support"
+category = "main"
+optional = false
+python-versions = ">=3.6.0"
+
+[[package]]
+name = "pulsectl"
+version = "22.3.2"
+description = "Python high-level interface and ctypes-based bindings for PulseAudio (libpulse)"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "pulsectl-asyncio"
+version = "0.2.3"
+description = "Asyncio frontend for the pulsectl Python bindings of libpulse"
+category = "main"
+optional = false
+python-versions = "~=3.6"
+
+[package.dependencies]
+pulsectl = ">=21.10.2,<=22.3.2"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.10"
+content-hash = "4db005876e689349bf341ad9c382c630a9bef71b5e38f99d9f60b390a69236b5"
+
+[metadata.files]
+dbus-next = [
+    {file = "dbus_next-0.2.3-py3-none-any.whl", hash = "sha256:58948f9aff9db08316734c0be2a120f6dc502124d9642f55e90ac82ffb16a18b"},
+    {file = "dbus_next-0.2.3.tar.gz", hash = "sha256:f4eae26909332ada528c0a3549dda8d4f088f9b365153952a408e28023a626a5"},
+]
+pulsectl = [
+    {file = "pulsectl-22.3.2-py2.py3-none-any.whl", hash = "sha256:6fded96a8e6a9ac6c387ed3a9bdb1afb20d80256b0c9df4b98b58461d74ba0c4"},
+    {file = "pulsectl-22.3.2.tar.gz", hash = "sha256:cc174e1ceebd4e6222c5b78f4f415f12e80753c9ab75ab354159b4cb5950b084"},
+]
+pulsectl-asyncio = [
+    {file = "pulsectl-asyncio-0.2.3.tar.gz", hash = "sha256:68e8c9efd5ca366bb9c5dbc7284bfa7a2250fc02279407c8c56994a5206bfcd1"},
+    {file = "pulsectl_asyncio-0.2.3-py3-none-any.whl", hash = "sha256:edf300852ae23164521dece8a60cc643014dbe38b56662b30a9711b0d9a0392d"},
+]
