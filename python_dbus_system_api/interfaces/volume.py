@@ -1,6 +1,6 @@
 import asyncio
-import pulsectl_asyncio, pulsectl
-from typing import Dict, List, Tuple, Type
+import pulsectl_asyncio
+from typing import Dict
 from dbus_next.service import ServiceInterface, method, signal
 from dbus_next.signature import Variant
 
@@ -30,6 +30,7 @@ class VolumeInterface(ServiceInterface):
                 "name": Variant("s", sink.name),
                 "mute": Variant("u", sink.mute),
                 "description": Variant("s", sink.description),
+                "volume_all_chans": Variant("d", sink.volume.value_flat),
                 # TODO: "sample_spec": Variant("?", sink.sample_spec),
                 "owner_module": Variant("u", sink.owner_module),
                 "latency": Variant("u", sink.latency),
@@ -42,6 +43,11 @@ class VolumeInterface(ServiceInterface):
             }
 
         return list(map(get_sink_dict, await self.pulse.sink_list()))
+
+    @method()
+    async def volume_get_all_chans(self, sink_name: "s") -> "d":  # type: ignore
+        sink = await self.pulse.get_sink_by_name(sink_name)
+        return await self.pulse.volume_get_all_chans(sink)
 
     @signal()
     def event(self, type: str, facility: str, index: int) -> "(ssi)":  # type: ignore
